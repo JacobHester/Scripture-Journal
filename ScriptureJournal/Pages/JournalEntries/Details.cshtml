@@ -1,0 +1,55 @@
+﻿@page
+@model ScriptureJournal.Pages.JournalEntries.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>JournalEntry</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.JournalEntry.EntryDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.JournalEntry.EntryDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.JournalEntry.Cannon)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.JournalEntry.Cannon)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.JournalEntry.Book)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.JournalEntry.Book)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.JournalEntry.Chapter)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.JournalEntry.Chapter)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.JournalEntry.Verse)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.JournalEntry.Verse)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.JournalEntry.Entry)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.JournalEntry.Entry)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.JournalEntry.ID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
