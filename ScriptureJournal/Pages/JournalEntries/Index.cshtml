@@ -5,33 +5,37 @@
     ViewData["Title"] = "Scripture Journal";
 }
 
-<h1>Scripture Journal</h1>
+<h1 style="font-family: 'Comfortaa', cursive;">Scripture Journal</h1>
 
-<p>
-    <a asp-page="Create">Create New</a>
+<p style="font-family: 'Comfortaa', cursive;">
+    <a asp-page="Create" class="btn btn-dark">Create New</a>
 </p>
 
 <form>
-    <p>
+    <p style="font-family: 'Comfortaa', cursive;">
         Search by Book: <input type="text" asp-for="SearchBook" />
     </p>
-    <p>
+    <p style="font-family: 'Comfortaa', cursive;">
         Search by Entry: <input type="text" asp-for="SearchEntry" />
         <input type="submit" value="Filter" />
     </p>
 </form>
 
-<table class="table">
-    <thead>
+<table class="table" style="font-family: 'Comfortaa', cursive;">
+    <thead style=" background-color: whitesmoke">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.JournalEntry[0].EntryDate)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort">
+                    @Html.DisplayNameFor(model => model.JournalEntry[0].EntryDate)
+                </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.JournalEntry[0].Cannon)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.JournalEntry[0].Book)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.BookSort">
+                    @Html.DisplayNameFor(model => model.JournalEntry[0].Book)
+                </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.JournalEntry[0].Chapter)
