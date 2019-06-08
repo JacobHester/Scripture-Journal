@@ -10,6 +10,7 @@ namespace ScriptureJournal.Models
     {
         public int ID { get; set; }
 
+        [Display(Name = "Entry Date")]
         [DataType(DataType.Date)]
         public DateTime EntryDate { get; set; }
         public string Cannon { get; set; }

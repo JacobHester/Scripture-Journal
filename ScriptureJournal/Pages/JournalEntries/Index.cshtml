@@ -2,14 +2,25 @@
 @model ScriptureJournal.Pages.JournalEntries.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Scripture Journal";
 }
 
-<h1>Index</h1>
+<h1>Scripture Journal</h1>
 
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+
+<form>
+    <p>
+        Search by Book: <input type="text" asp-for="SearchBook" />
+    </p>
+    <p>
+        Search by Entry: <input type="text" asp-for="SearchEntry" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
 <table class="table">
     <thead>
         <tr>
@@ -28,7 +39,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.JournalEntry[0].Verse)
             </th>
-            <th style="white-space: nowrap; width: 250px; height: 50px; overflow: hidden; text-overflow: ellipsis">
+            <th>
                 @Html.DisplayNameFor(model => model.JournalEntry[0].Entry)
             </th>
             <th></th>
@@ -52,8 +63,24 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Verse)
             </td>
+            @{
+                string ellipsedEntry;
+
+                if (item.Entry.Length > 20)
+                {
+                    ellipsedEntry = item.Entry.Substring(0, 20) + "...";
+
+                }
+                else
+                {
+                    ellipsedEntry = item.Entry;
+                }
+
+
+
+            }
             <td>
-                @Html.DisplayFor(modelItem => item.Entry)
+                @Html.DisplayFor(modelItem => ellipsedEntry)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |

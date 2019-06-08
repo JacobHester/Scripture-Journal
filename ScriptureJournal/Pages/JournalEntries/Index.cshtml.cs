@@ -19,10 +19,28 @@ namespace ScriptureJournal.Pages.JournalEntries
         }
 
         public IList<JournalEntry> JournalEntry { get;set; }
+        [BindProperty(SupportsGet = true)]
+        public string SearchBook { get; set; }
+
+        [BindProperty(SupportsGet = true)]
+        public string SearchEntry { get; set; }
 
         public async Task OnGetAsync()
         {
-            JournalEntry = await _context.JournalEntry.ToListAsync();
+            var journalEntries = from m in _context.JournalEntry
+                                 select m;
+
+            if (!string.IsNullOrEmpty(SearchBook))
+            {
+                journalEntries = journalEntries.Where(s => s.Book.Contains(SearchBook));
+            }
+
+            if (!string.IsNullOrEmpty(SearchEntry))
+            {
+                journalEntries = journalEntries.Where(s => s.Entry.Contains(SearchEntry));
+            }
+
+            JournalEntry = await journalEntries.ToListAsync();
         }
     }
 }
